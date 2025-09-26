@@ -86,7 +86,7 @@ The app is built using **SwiftUI** with a modular and clean architecture approac
 
 - Layers
   - Data:
-    - Seed shops: JSON decoding from bundled/local file.
+    - Honey shops: JSON decoding from bundled/local file.
     - Reviews: SwiftData storage (separate model/table), protocol-driven data access via `ReviewStore`.
   - Domain: Entities (ShopSeed, ReviewModel), mappers, validation, and business rules (average rating computation).
   - Presentation: SwiftUI views, reusable components (StarRatingView, ShopCard, AddressLink, ReviewList, ReviewForm) and observable view models.
