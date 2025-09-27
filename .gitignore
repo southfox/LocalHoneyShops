@@ -2,3 +2,4 @@ Build
 .DS_Store
 *.xcuserstate
 user.xcuserdatad
+*.xcbkptlist
