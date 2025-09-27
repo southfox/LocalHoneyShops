@@ -27,7 +27,7 @@
 		98C24C352E7B14A100B28F33 /* Local Honey Shops.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Local Honey Shops.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		98C24C462E7B14A200B28F33 /* Local Honey ShopsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Local Honey ShopsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		98C24C502E7B14A200B28F33 /* Local Honey ShopsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Local Honey ShopsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		98C24C642E7B14C000B28F33 /* README */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = README; sourceTree = "<group>"; };
+		98F99EE12E880D2800ACE1CD /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -89,7 +89,7 @@
 		98C24C2C2E7B14A100B28F33 = {
 			isa = PBXGroup;
 			children = (
-				98C24C642E7B14C000B28F33 /* README */,
+				98F99EE12E880D2800ACE1CD /* README.md */,
 				98C24C372E7B14A100B28F33 /* Local Honey Shops */,
 				98C24C492E7B14A200B28F33 /* Local Honey ShopsTests */,
 				98C24C532E7B14A200B28F33 /* Local Honey ShopsUITests */,

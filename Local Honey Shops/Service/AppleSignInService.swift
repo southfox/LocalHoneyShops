@@ -108,9 +108,13 @@ final class AppleSignInService: NSObject, AuthenticationService {
                 .compactMap { $0 as? UIWindowScene }
                 .first { $0.activationState == .foregroundActive }
             let window = windowScene?.keyWindow ?? windowScene?.windows.first
-            // If we couldn't find a current window, fall back to a new UIWindow()
-            // (ASPresentationAnchor is a typealias to UIWindow on iOS)
-            return window ?? UIWindow()
+            if let window = window {
+                return window
+            }
+            guard let windowScene = windowScene else {
+                fatalError("No window scene available for Apple Sign In presentation")
+            }
+            return UIWindow(windowScene: windowScene)
         }
 
         func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {

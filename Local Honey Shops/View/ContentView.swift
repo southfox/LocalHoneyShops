@@ -6,59 +6,20 @@ import SwiftUI
 import Combine
 import MapKit
 
-@MainActor
-class ContentViewModel: ObservableObject {
-    @Published var items: [Item] = []
-    @Published var isLoading = false
-    @Published var errorMessage: String? = nil
-    @Published var searchText: String = ""
-
-    private let repository: ShopRepository
-
-    init(repository: ShopRepository) {
-        self.repository = repository
-        Task { await fetchItems() }
-    }
-    
-    func fetchItems() async {
-        isLoading = true
-        errorMessage = nil
-        do {
-            let fetchedItems = try await repository.fetchShops()
-            items = fetchedItems
-        } catch {
-            errorMessage = "Failed to load shops. Please try again later."
-        }
-        isLoading = false
-    }
-    
-    var filteredItems: [Item] {
-        guard !searchText.isEmpty else { return items }
-        let search = searchText.lowercased()
-        return items.filter { item in
-            item.name.lowercased().contains(search) ||
-            item.address.lowercased().contains(search) ||
-            item.itemDescription.lowercased().contains(search)
-        }
-    }
-}
-
 private enum ContentDisplayMode: String, CaseIterable, Identifiable {
     case list = "List"
     case map = "Map"
     var id: String { rawValue }
 }
 
-@MainActor
 struct ContentView: View {
     @EnvironmentObject private var auth: AuthViewModel
-    @StateObject var viewModel: ContentViewModel
+    @StateObject private var viewModel: ContentViewModel
     @State private var displayMode: ContentDisplayMode = .list
     @State private var showingLogin = false
     
-    @MainActor
     init(repository: ShopRepository = CachedShopRepository(remote: RemoteShopRepository())) {
-        _viewModel = StateObject(wrappedValue: ContentViewModel(repository: repository))
+        self._viewModel = StateObject(wrappedValue: ContentViewModel(repository: repository))
     }
     
     var body: some View {
@@ -104,6 +65,9 @@ struct ContentView: View {
             }
             .searchable(text: $viewModel.searchText, placement: .automatic, prompt: "Search Honey Shops")
             .navigationTitle("Honey Shops")
+            .task {
+                await viewModel.fetchItems()
+            }
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {

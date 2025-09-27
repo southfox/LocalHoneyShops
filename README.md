@@ -29,7 +29,7 @@ An iOS SwiftUI app displaying Local Honey Shops, with modular architecture, deta
 
 ---
 
-## Assignment Details ##
+## Project Details ##
 
 Build a simple app that allows the user to:  
 1. View a list of Local Honey Shops (with shop name, address, and star ratings).  
@@ -55,7 +55,27 @@ The seed shop data will be supplied in JSON format. User-generated reviews are s
 - Solution works as expected.  
 - Clean, well-written, and documented code.  
 - Functional with all requirements satisfied.  
-- Clear, modular architecture and clean code patterns.  
+
+✅ Clear, modular architecture and clean code patterns.
+    1. Protocol-Based Abstraction: 
+       • ShopRepository protocol with multiple implementations (RemoteShopRepository, MockShopRepository, CachedShopRepository)
+       • AuthenticationService protocols for different sign-in providers
+       • Proper dependency injection pattern
+    2. Clean Separation of Concerns:
+       • Data Layer: Repositories handle data fetching/caching
+       • Domain Layer: Item model with proper Codable conformance
+       • Presentation Layer: SwiftUI views with dedicated ViewModels
+
+    3. Reusable Components:
+       • ShopCardView with search highlighting functionality
+       • Separation of UI components from business logic
+       • Environment-based dependency injection
+
+    4. Modern SwiftUI Patterns:
+       • @StateObject and @ObservableObject for state management
+       • Proper use of @MainActor for UI updates
+       • NavigationSplitView for adaptive layouts
+
 ✅ SwiftUI must be used (UIKit submissions will not be accepted).  
 ✅ Reusable solution design, easily adaptable to different data/APIs.  
 ✅ Reusable components and views: Common SwiftUI views (e.g., star rating, shop card, address link) and UI building blocks are implemented once and used across multiple screens to ensure consistency and reduce code duplication.  
