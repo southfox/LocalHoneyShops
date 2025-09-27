@@ -1,4 +1,4 @@
-# Local Honey Shops
+# Local Honey Shops #
 
 **Created by Javier Fuchs on 17/09/2025**
 
@@ -6,13 +6,13 @@
 
 ---
 
-## Project Description
+## Project Description ##
 
 An iOS SwiftUI app displaying Local Honey Shops, with modular architecture, detail screens, map/web integration, and on-device user reviews with ratings submission stored using SwiftData.
 
 ---
 
-## Table of Contents
+## Table of Contents ##
 
 - [Assignment Details](#assignment-details)  
 - [Grading Criteria](#grading-criteria)  
@@ -29,7 +29,7 @@ An iOS SwiftUI app displaying Local Honey Shops, with modular architecture, deta
 
 ---
 
-## Assignment Details
+## Assignment Details ##
 
 Build a simple app that allows the user to:  
 1. View a list of Local Honey Shops (with shop name, address, and star ratings).  
@@ -50,7 +50,7 @@ The seed shop data will be supplied in JSON format. User-generated reviews are s
 
 ---
 
-## Grading Criteria
+## Grading Criteria ##
 
 - Solution works as expected.  
 - Clean, well-written, and documented code.  
@@ -65,7 +65,7 @@ The seed shop data will be supplied in JSON format. User-generated reviews are s
 
 ---
 
-## Getting Started
+## Getting Started ##
 
 1. Clone or download the project.  
 2. Open the `.xcodeproj` or `.xcworkspace` in Xcode 15+ (SwiftData requires iOS 17+).  
@@ -80,7 +80,7 @@ Notes:
 
 ---
 
-## Architecture
+## Architecture ##
 
 The app is built using **SwiftUI** with a modular and clean architecture approach.
 
@@ -106,7 +106,7 @@ The app is built using **SwiftUI** with a modular and clean architecture approac
 
 ---
 
-## SwiftData Storage
+## SwiftData Storage ##
 
 This project integrates SwiftData to persist user reviews in a dedicated model (table) separate from the seed shop data.
 
@@ -141,7 +141,7 @@ This project integrates SwiftData to persist user reviews in a dedicated model (
 
 ---
 
-## Reviews Feature
+## Reviews Feature ##
 
 - Overview
   - Users can submit reviews for any shop: star rating (0.5–5.0), optional title, and optional comment.
@@ -169,7 +169,7 @@ This project integrates SwiftData to persist user reviews in a dedicated model (
 
 ---
 
-## Data Model
+## Data Model ##
 
 - ShopSeed (decoded from seed JSON; not persisted via SwiftData)
   - id: String (stable identifier derived from name/address or provided)
@@ -201,7 +201,7 @@ Notes:
 
 ---
 
-## Screens & Navigation
+## Screens & Navigation ##
 
 - Shop List
   - Displays shop cards with name, address, and displayed rating.
@@ -216,17 +216,17 @@ Notes:
 
 - Add Review Flow
   - Presents ReviewFormView:
-    - Star rating input (0.5 step).
+    - Star rating input (0-5 step).
     - Optional title and comment fields with validation hints.
     - Save/Cancel actions.
   - On Save: Persists via SwiftData and updates the list/detail immediately.
 
 ---
 
-## Testing
+## Testing ##
 
 - Unit Tests
-  - JSON decoding for shops.
+  ✅ JSON decoding for shops.
   - Review validation rules (rating bounds, field lengths).
   - Average rating computation logic.
   - SwiftData ReviewStore implementation (using an in-memory ModelContainer).
@@ -243,7 +243,7 @@ Notes:
 
 ---
 
-## Future Improvements
+## Future Improvements ##
 
 - Add Sign in into iCloud
 ✅ Add offline caching of Honey shop data.
@@ -260,7 +260,7 @@ Notes:
 
 ---
 
-## Sample Honey Shops JSON
+## Sample Honey Shops JSON ##
 
 Using https://api.jsonbin.io
 
