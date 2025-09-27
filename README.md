@@ -199,7 +199,7 @@ This project integrates SwiftData to persist user reviews in a dedicated model (
   - rating: Double (seed)
   - address: String
   - coordinates: [Double; lat, lon]
-  - google_maps_link: URL?
+  - map: URL?
   - website: URL?
 
 - ReviewEntity (SwiftData @Model; separate table)
@@ -293,7 +293,7 @@ Using https://api.jsonbin.io
     "rating": 4.8,
     "address": "Mariani Ave, Henley Brook WA 6055, Australia",
     "coordinates": [ -31.8552, 116.0019],
-    "google_maps_link": "https://www.google.com/maps/place/The+House+of+Honey+WA",
+    "map": "https://www.google.com/maps/place/The+House+of+Honey+WA",
     "website": "https://thehouseofhoney.com.au"
   },
   {
@@ -303,7 +303,7 @@ Using https://api.jsonbin.io
     "rating": 4.7,
     "address": "19 S Tracy Ave, Bozeman, MT 59715, USA",
     "coordinates": [45.6740, -111.0429],
-    "google_maps_link": "https://www.google.com/maps/place/Montana+Honey+Bee+Company",
+    "map": "https://www.google.com/maps/place/Montana+Honey+Bee+Company",
     "website": "https://montanahoneybeecompany.com"
   },
   {
@@ -313,7 +313,7 @@ Using https://api.jsonbin.io
     "rating": 4.5,
     "address": "8060 E US Hwy 190, Rogers, TX 76569, USA",
     "coordinates": [31.1305, -97.2361],
-    "google_maps_link": "https://www.google.com/maps/place/Walker+Honey+Farm",
+    "map": "https://www.google.com/maps/place/Walker+Honey+Farm",
     "website": "https://www.walkerhoneyfarm.com"
   },
   {
@@ -323,7 +323,7 @@ Using https://api.jsonbin.io
     "rating": 4.6,
     "address": "Knoxfield VIC, Melbourne, Australia",
     "coordinates": [-37.8550, 145.2050],
-    "google_maps_link": "https://www.google.com/maps/place/The+Basin+Backyard",
+    "map": "https://www.google.com/maps/place/The+Basin+Backyard",
     "website": "https://www.tbbyard.com.au"
   },
   {
@@ -333,7 +333,7 @@ Using https://api.jsonbin.io
     "rating": 4.4,
     "address": "724 S Colorado Ave, Stuart, FL 34997, USA",
     "coordinates": [27.1942, -80.2498],
-    "google_maps_link": "https://www.google.com/maps/place/Hani+Honey+Company",
+    "map": "https://www.google.com/maps/place/Hani+Honey+Company",
     "website": "https://hanihoneycompany.com"
   }
 ]

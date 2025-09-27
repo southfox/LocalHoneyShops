@@ -32,7 +32,7 @@ struct ShopDetailView: View {
                         .allowsHitTesting(false)
                         // Visual button overlay in bottom-right (kept as-is)
                         .overlay(alignment: .bottomTrailing) {
-                            if let mapsURL = URL(string: shop.googleMapsLink) {
+                            if let mapsURL = URL(string: shop.map) {
                                 Link(destination: mapsURL) {
                                     Label("Open Maps", systemImage: "map")
                                         .font(.caption.bold())
@@ -44,7 +44,7 @@ struct ShopDetailView: View {
                         }
                         // Full-surface invisible tap target to open Maps when tapping anywhere
                         .overlay {
-                            if let mapsURL = URL(string: shop.googleMapsLink) {
+                            if let mapsURL = URL(string: shop.map) {
                                 Color.clear
                                     .contentShape(Rectangle())
                                     .onTapGesture {
@@ -57,7 +57,7 @@ struct ShopDetailView: View {
                 }
 
                 // Address with clickable link to Maps
-                if let mapsURL = URL(string: shop.googleMapsLink) {
+                if let mapsURL = URL(string: shop.map) {
                     Link(shop.address, destination: mapsURL)
                         .font(.subheadline)
                         .foregroundStyle(.blue)

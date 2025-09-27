@@ -12,20 +12,27 @@ class HoneyShopService {
     func fetch() async throws -> [Item] {
         var request = URLRequest(url: url)
         request.setValue(masterKey, forHTTPHeaderField: "X-Master-Key")
-        
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+
         let (data, response) = try await URLSession.shared.data(for: request)
         guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
             throw URLError(.badServerResponse)
         }
-        
-        struct JSONResponse: Decodable {
-            let record: [Item]
-        }
-        
+        return try await decode(data)
+    }
+
+    func decode(_ data: Data) async throws -> [Item] {
         let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
-        let apiResponse = try decoder.decode(JSONResponse.self, from: data)
-        return apiResponse.record
+        do {
+            let apiResponse = try decoder.decode(JSONResponse.self, from: data)
+            return apiResponse.record
+        } catch let DecodingError.typeMismatch(type, context) {
+            print("Type mismatch:", type, "at", context.codingPath.map(\.stringValue).joined(separator: " -> "))
+            print(context.debugDescription)
+            throw URLError(.cannotDecodeContentData)
+        } catch {
+            throw error
+        }
     }
 }
 

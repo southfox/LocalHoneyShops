@@ -134,7 +134,7 @@ struct ShopsMapView: View {
             rating: 4.0,
             address: "〒380-0824 長野県長野市南長野南石堂町1421",
             coordinates: [36.644257, 138.18668],
-            googleMapsLink: "https://maps.app.goo.gl/4fYMDSfNd6ocsDwt6",
+            map: "https://maps.app.goo.gl/4fYMDSfNd6ocsDwt6",
             website: "https://www.sushinano.com/",
             timestamp: Date()
         ),
@@ -145,7 +145,7 @@ struct ShopsMapView: View {
             rating: 4.2,
             address: "〒380-0835 長野県長野市新田町1464",
             coordinates: [36.629883, 138.21141],
-            googleMapsLink: "https://maps.app.goo.gl/wRD6LRQc7Ct9QXMG8",
+            map: "https://maps.app.goo.gl/wRD6LRQc7Ct9QXMG8",
             website: "http://www.nagano-Honey.com/",
             timestamp: Date()
         ),
@@ -156,7 +156,7 @@ struct ShopsMapView: View {
             rating: 4.5,
             address: "長野県長野市中央通り",
             coordinates: [36.6485, 138.1940],
-            googleMapsLink: "https://maps.app.goo.gl/",
+            map: "https://maps.app.goo.gl/",
             website: "https://example.com",
             timestamp: Date()
         )

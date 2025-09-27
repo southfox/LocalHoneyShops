@@ -15,15 +15,14 @@ final class HoneyShopServiceMock: HoneyShopService, @unchecked Sendable {
 
     // Override to return JSON from mock data instead of network
     override func fetch() async throws -> [Item] {
-        struct JSONBinResponse: Decodable {
-            let record: [Item]
+
+        // Wrap the test JSON array in the same structure as the real API
+        let jsonString = String(data: jsonData, encoding: .utf8) ?? "[]"
+        let wrappedJSON = "{\"record\":\(jsonString)}"
+        guard let data = wrappedJSON.data(using: .utf8) else {
+            throw URLError(.cannotDecodeContentData)
         }
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
-        // Simulate the same API response shape as the real service
-        let wrapped = "{\"record\":\(jsonData.isEmpty ? "[]" : String(data: jsonData, encoding: .utf8) ?? "[]")}".data(using: .utf8)!
-        let apiResponse = try decoder.decode(JSONBinResponse.self, from: wrapped)
-        return apiResponse.record
+        return try await decode(data)
     }
 }
 

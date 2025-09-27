@@ -38,10 +38,15 @@ struct ContentView: View {
                         ProgressView("Loading…")
                             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
                     } else if let errorMessage = viewModel.errorMessage {
-                        Text(errorMessage)
-                            .foregroundStyle(.red)
-                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-                            .padding()
+                        List {
+                            Text(errorMessage)
+                                .foregroundStyle(.red)
+                                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+                                .padding()
+                        }
+                        .refreshable {
+                            await viewModel.fetchItems()
+                        }
                     } else {
                         switch displayMode {
                         case .list:

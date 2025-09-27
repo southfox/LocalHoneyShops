@@ -16,7 +16,8 @@ struct CachedShopRepository: ShopRepository {
     @MainActor
     func fetchShops() async throws -> [Item] {
         // Try loading from cache first
-        if let cached = loadCachedItems() {
+        let cached = try loadCachedItems()
+        if cached.isEmpty == false {
             return cached
         }
         // Else fetch remote and cache
@@ -25,9 +26,9 @@ struct CachedShopRepository: ShopRepository {
         return fetched
     }
     
-    private func loadCachedItems() -> [Item]? {
-        guard let url = cacheURL, let data = try? Data(contentsOf: url) else { return nil }
-        return try? JSONDecoder().decode([Item].self, from: data)
+    private func loadCachedItems() throws -> [Item] {
+        guard let url = cacheURL, let data = try? Data(contentsOf: url) else { return [] }
+        return try JSONDecoder().decode([Item].self, from: data)
     }
     
     private func cacheItems(_ items: [Item]) {

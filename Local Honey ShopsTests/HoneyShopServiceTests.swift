@@ -15,11 +15,8 @@ struct HoneyShopServiceTests {
           "picture": "https://thehouseofhoney.com.au/wp-content/uploads/2024/01/shopfront.jpg",
           "rating": 4.8,
           "address": "Mariani Ave, Henley Brook WA 6055, Australia",
-          "coordinates": {
-            "lat": -31.8552,
-            "lng": 116.0019
-          },
-          "google_maps_link": "https://www.google.com/maps/place/The+House+of+Honey+WA",
+          "coordinates": [ -31.8552, 116.0019],
+          "map": "https://www.google.com/maps/place/The+House+of+Honey+WA",
           "website": "https://thehouseofhoney.com.au"
         },
         {
@@ -28,11 +25,8 @@ struct HoneyShopServiceTests {
           "picture": "https://montanahoneybeecompany.com/images/storefront.jpg",
           "rating": 4.7,
           "address": "19 S Tracy Ave, Bozeman, MT 59715, USA",
-          "coordinates": {
-            "lat": 45.6740,
-            "lng": -111.0429
-          },
-          "google_maps_link": "https://www.google.com/maps/place/Montana+Honey+Bee+Company",
+          "coordinates": [45.6740, -111.0429],
+          "map": "https://www.google.com/maps/place/Montana+Honey+Bee+Company",
           "website": "https://montanahoneybeecompany.com"
         }
     ]
@@ -58,11 +52,8 @@ struct HoneyShopServiceTests {
     @Test("Invalid JSON throws error")
     func testInvalidJSONThrows() async throws {
         let mock = HoneyShopServiceMock(json: "invalid json")
-        do {
-            _ = try await mock.fetch()
-            #expect(Bool(false), "Should throw on invalid JSON")
-        } catch {
-            #expect(true)
+        await #expect(throws: (any Error).self) {
+            try await mock.fetch()
         }
     }
 }

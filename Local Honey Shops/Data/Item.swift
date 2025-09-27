@@ -13,7 +13,7 @@ final class Item {
     var rating: Double
     var address: String
     var coordinates: [Double]
-    var googleMapsLink: String
+    var map: String
     var website: String
     var timestamp: Date
 
@@ -24,7 +24,7 @@ final class Item {
         rating: Double,
         address: String,
         coordinates: [Double],
-        googleMapsLink: String,
+        map: String,
         website: String,
         timestamp: Date
     ) {
@@ -34,7 +34,7 @@ final class Item {
         self.rating = rating
         self.address = address
         self.coordinates = coordinates
-        self.googleMapsLink = googleMapsLink
+        self.map = map
         self.website = website
         self.timestamp = timestamp
     }
@@ -46,10 +46,14 @@ final class Item {
         rating: 4.4,
         address: "724 S Colorado Ave, Stuart, FL 34997, USA",
         coordinates: [27.1942, -80.2498],
-        googleMapsLink: "https://www.google.com/maps/place/Hani+Honey+Company",
+        map: "https://www.google.com/maps/place/Hani+Honey+Company",
         website: "https://hanihoneycompany.com",
         timestamp: Date()
     )
+}
+
+struct JSONResponse: Decodable {
+    let record: [Item]
 }
 
 extension Item: Codable {
@@ -60,7 +64,7 @@ extension Item: Codable {
         case rating
         case address
         case coordinates
-        case googleMapsLink
+        case map
         case website
     }
 
@@ -73,7 +77,7 @@ extension Item: Codable {
             rating: try container.decode(Double.self, forKey: .rating),
             address: try container.decode(String.self, forKey: .address),
             coordinates: try container.decode([Double].self, forKey: .coordinates),
-            googleMapsLink: try container.decode(String.self, forKey: .googleMapsLink),
+            map: try container.decode(String.self, forKey: .map),
             website: try container.decode(String.self, forKey: .website),
             timestamp: Date()
         )
@@ -87,7 +91,7 @@ extension Item: Codable {
         try container.encode(rating, forKey: .rating)
         try container.encode(address, forKey: .address)
         try container.encode(coordinates, forKey: .coordinates)
-        try container.encode(googleMapsLink, forKey: .googleMapsLink)
+        try container.encode(map, forKey: .map)
         try container.encode(website, forKey: .website)
     }
 }
