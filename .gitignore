@@ -3,3 +3,4 @@ Build
 *.xcuserstate
 user.xcuserdatad
 *.xcbkptlist
+DerivedData

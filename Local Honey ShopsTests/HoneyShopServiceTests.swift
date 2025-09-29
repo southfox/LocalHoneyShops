@@ -6,6 +6,7 @@ import Testing
 @testable import Local_Honey_Shops
 
 @Suite("HoneyShopService JSON Decoding")
+@MainActor
 struct HoneyShopServiceTests {
     let sampleJSON = """
     [

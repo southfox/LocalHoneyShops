@@ -14,6 +14,7 @@ final class HoneyShopServiceMock: HoneyShopService, @unchecked Sendable {
     }
 
     // Override to return JSON from mock data instead of network
+    @MainActor
     override func fetch() async throws -> [Item] {
 
         // Wrap the test JSON array in the same structure as the real API
